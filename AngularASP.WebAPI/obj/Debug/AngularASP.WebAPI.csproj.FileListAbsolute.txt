@@ -61,3 +61,6 @@ C:\Code\C#\AngularASP\AngularASP.WebAPI\bin\System.Web.Http.Owin.xml
 C:\Code\C#\AngularASP\AngularASP.WebAPI\obj\Debug\AngularASP.WebAPI.csprojResolveAssemblyReference.cache
 C:\Code\C#\AngularASP\AngularASP.WebAPI\obj\Debug\AngularASP.WebAPI.dll
 C:\Code\C#\AngularASP\AngularASP.WebAPI\obj\Debug\AngularASP.WebAPI.pdb
+C:\Code\C#\AngularASP\AngularASP.WebAPI\bin\System.Web.Cors.dll
+C:\Code\C#\AngularASP\AngularASP.WebAPI\bin\System.Web.Http.Cors.dll
+C:\Code\C#\AngularASP\AngularASP.WebAPI\bin\System.Web.Http.Cors.xml

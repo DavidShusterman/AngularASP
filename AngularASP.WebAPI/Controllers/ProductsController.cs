@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using APM.WebAPI.Models;
 
 namespace AngularASP.WebAPI.Controllers
 {
+    [EnableCorsAttribute("http://localhost:6197","*","*")]
     public class ProductsController : ApiController
     {
         // GET: api/Product
@@ -21,6 +23,13 @@ namespace AngularASP.WebAPI.Controllers
         public string Get(int id)
         {
             return "value";
+        }
+
+        public IEnumerable<Product> Get(string search)
+        {
+            var productRepository = new ProductRepository();
+            var products = productRepository.Retrieve();
+            return products.Where(p => p.ProductCode.Contains(search));
         }
 
         // POST: api/Product
