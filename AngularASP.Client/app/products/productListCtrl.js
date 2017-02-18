@@ -8,7 +8,7 @@
     function ProductListCtrl(productResource) {
         var vm = this;
 
-        productResource.query({ $filter: "substringof('GDN',ProductCode)" }, function (data) {
+        productResource.query({ }, function (data) {
             vm.products = data;
         });
     }

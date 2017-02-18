@@ -43,13 +43,17 @@ namespace AngularASP.WebAPI.Controllers
         }
 
         // POST: api/Product
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Product product)
         {
+            var productRepository = new ProductRepository();
+            var newProduct = productRepository.Save(product);
         }
 
         // PUT: api/Product/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Product product)
         {
+            var productRepository = new ProductRepository();
+            var updatedProduct = productRepository.Save(id,product);
         }
 
         // DELETE: api/Product/5
