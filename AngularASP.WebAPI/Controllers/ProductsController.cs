@@ -5,31 +5,41 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.OData;
 using APM.WebAPI.Models;
 
 namespace AngularASP.WebAPI.Controllers
 {
-    [EnableCorsAttribute("http://localhost:6197","*","*")]
+    [EnableCorsAttribute("http://localhost:6197", "*", "*")]
+    [EnableQuery]
     public class ProductsController : ApiController
     {
         // GET: api/Product
-        public IEnumerable<Product> Get()
-        {
-            var productRepository = new ProductRepository();
-            return productRepository.Retrieve();
-        }
-
-        // GET: api/Product/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        public IEnumerable<Product> Get(string search)
+        [EnableQuery]
+        public IQueryable<Product> Get()
         {
             var productRepository = new ProductRepository();
             var products = productRepository.Retrieve();
-            return products.Where(p => p.ProductCode.Contains(search));
+            return products.AsQueryable();
+        }
+
+        [EnableQuery]
+        public Product Get(int id)
+        {
+            Product product;
+            var productRepository = new ProductRepository();
+
+            if (id > 0)
+            {
+                var products = productRepository.Retrieve();
+                product = products.FirstOrDefault(p => p.ProductId == id);
+            }
+            else
+            {
+                product = productRepository.Create();
+            }
+            return product;
+
         }
 
         // POST: api/Product
